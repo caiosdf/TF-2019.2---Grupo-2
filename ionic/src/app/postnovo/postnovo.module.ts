@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { PostnovoPage } from './postnovo.page';
+import { Camera } from '@ionic-native/camera/ngx';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PostnovoPage]
+  declarations: [PostnovoPage],
+  providers: [Camera]
 })
 export class PostnovoPageModule {}

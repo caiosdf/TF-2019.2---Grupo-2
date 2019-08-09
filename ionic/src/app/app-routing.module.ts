@@ -5,7 +5,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },  { path: 'postnovo', loadChildren: './postnovo/postnovo.module#PostnovoPageModule' }
+  },
+  { path: 'postnovo', loadChildren: './postnovo/postnovo.module#PostnovoPageModule' }
 
 ];
 @NgModule({
