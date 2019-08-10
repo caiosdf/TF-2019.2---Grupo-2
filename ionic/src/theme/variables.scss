@@ -74,4 +74,23 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** Azul Primeira Página**/
+  --ion-color-azul-paginaum: #52ACF4;
+  --ion-color-azul-paginaum-rgb: 82,172,244;
+  --ion-color-azul-paginaum-contrast: #000000;
+  --ion-color-azul-paginaum-contrast-rgb: 0,0,0;
+  --ion-color-azul-paginaum-shade: #4897d7;
+  --ion-color-azul-paginaum-tint: #63b4f5;
+
+  /** azul escuro Primeira Página**/
+  --ion-color-azul-login: #3D89B8;
+  --ion-color-azul-login-rgb: 61,137,184;
+  --ion-color-azul-login-contrast: #ffffff;
+  --ion-color-azul-login-contrast-rgb: 255,255,255;
+  --ion-color-azul-login-shade: #3679a2;
+  --ion-color-azul-login-tint: #5095bf;
+
+  /** Fontes **/
+  @import url('https://fonts.googleapis.com/css?family=Raleway:900&display=swap');
 }

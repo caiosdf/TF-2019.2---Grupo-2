@@ -1,0 +1,43 @@
+ion-content.background{
+    --background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../../assets/img/frozen.gif') 0 0/100% 100% no-repeat; 
+}
+ion-content{
+    --ion-font-family: 'Raleway', sans-serif; 
+}
+ion-text.sombra{
+    text-shadow: 2px 2px 2px #000;
+}
+ion-grid{
+    height: 100%;
+}
+ion-row.logo{
+    height: 30%;
+    letter-spacing: 1rem;
+    font-size: 72px;
+}
+ion-row.introducao{
+    height: 40%;
+    font-size: 36px; 
+}
+ion-row.entrar{
+    height: 30%;
+}
+ion-button{
+    margin-bottom: 5%;
+}
+.ion-color-azul-paginaum {
+    --ion-color-base: var(--ion-color-azul-paginaum);
+    --ion-color-base-rgb: var(--ion-color-azul-paginaum-rgb);
+    --ion-color-contrast: var(--ion-color-azul-paginaum-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-azul-paginaum-contrast-rgb);
+    --ion-color-shade: var(--ion-color-azul-paginaum-shade);
+    --ion-color-tint: var(--ion-color-azul-paginaum-tint);
+  }
+  .ion-color-azul-login {
+    --ion-color-base: var(--ion-color-azul-login);
+    --ion-color-base-rgb: var(--ion-color-azul-login-rgb);
+    --ion-color-contrast: var(--ion-color-azul-login-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-azul-login-contrast-rgb);
+    --ion-color-shade: var(--ion-color-azul-login-shade);
+    --ion-color-tint: var(--ion-color-azul-login-tint);
+}
