@@ -1,1 +1,49 @@
+.post img {
+    max-height: 51.5vh;
+    overflow: hidden;
+  }
 
+ion-content{
+    --background: #9ACCFC;
+}
+ion-label.username{
+    font-weight: 900;
+    font-size: 18px;
+}
+
+ion-row{
+    text-align: center;
+}
+ion-card{
+    display: fixed;
+    --background: #ffffff;
+}
+ion-card.comentario{
+    margin-bottom: 1vh;
+}
+ion-button.like-share{
+    --background: #ffffff;
+    --padding-start: 0;
+    --padding-end: 10px;
+}
+ion-button{
+    margin-bottom: 1vh;
+}
+
+ion-icon{
+    color:#373737;
+}
+.post img {
+    max-height: 51.5vh;
+    overflow: hidden;
+}
+ion-label.username{
+    font-weight: 900;
+    font-size: 18px;
+  }
+ion-card-content{
+    padding-top: 0;
+}
+text-area{
+        
+}
