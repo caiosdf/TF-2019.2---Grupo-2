@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
+
     // A URL da API
     apiUrl: string = "http://localhost:8000/api/";
   
@@ -26,5 +27,13 @@ export class AuthService {
         'email' : email,
         'password' : senha
       }, this.httpHeaders );
+    }
+
+    enviarCadastro( nome,email,senha ): Observable<any> {
+      return this.http.post( this.apiUrl + 'cadastro', {
+        'name': nome, 
+        'email': email, 
+        'password': senha
+      }, this.httpHeaders);
     }
 }

@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

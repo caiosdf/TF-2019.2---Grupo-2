@@ -13,12 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
+
 // Rotas da PassportController que não precisam de token
 Route::post('login', 'API\PassportController@login');
-
+Route::post('cadastro', 'API\PassportController@register');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
 
