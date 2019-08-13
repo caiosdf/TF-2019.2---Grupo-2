@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,22 +11,29 @@ export class LoginPage implements OnInit {
 
   public login: FormGroup;
 
-  constructor(private fconstrutor: FormBuilder) { 
+  constructor(private fconstrutor: FormBuilder, public authService: AuthService) { 
     this.login = this.fconstrutor.group({
       'email': ['',Validators.compose([
         Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(10)
+        Validators.maxLength(50)
       ])],
-      'senha': ['', Validators.compose([
+      'password': ['', Validators.compose([
         Validators.required,
-        Validators.minLength(6)
+        Validators.maxLength(50)
       ])]
     });
   }
 
-  validarLogin(){
-    console.log(this.login.value);
+  logarUsuario( form ){
+
+    //if(form.status=='VALID'){
+      this.authService.logarUsuario( form.value.email, form.value.password ).subscribe(
+        ( res ) => {
+          console.log( res.message );
+          localStorage.setItem('userToken', res.data.token);
+        }
+      );
+   // }
   }
 
   ngOnInit() {
