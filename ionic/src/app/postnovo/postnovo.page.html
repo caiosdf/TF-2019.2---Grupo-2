@@ -24,7 +24,7 @@
   </ion-item>
     <!-- Input do texto e imagem do usuário -->
   <ion-list>
-      <img [src]="myPhoto" *ngIf="myPhoto">
+      <img src="{{myPhoto}}">
 
       <ion-textarea auto-grow="true" placeholder="Coloque aqui o conteúdo do seu post :)"></ion-textarea>
   </ion-list>
@@ -32,15 +32,7 @@
 <!-- Editar fonte, inserir link e foto -->
 <ion-footer>  
   <ion-toolbar position="bottom" color="background">
-    <ion-buttons class="ion-justify-content-evenly">
-      
-      <ion-button>
-        <ion-icon src="../assets/text.svg" size="large"></ion-icon>
-      </ion-button>
-
-      <ion-button>
-          <ion-icon name="link" size="large"></ion-icon>
-      </ion-button>
+    <ion-buttons class="ion-justify-content-center">
 
       <ion-button (click)="openCamera()" expand="block">
           <ion-icon name="camera" size="large"></ion-icon>
