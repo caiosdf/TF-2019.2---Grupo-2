@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Redefinir Senha</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none"  >
+    <ion-icon slot="start" name="arrow-back" color="black" (click)=voltar()></ion-icon>
+  </ion-item>
+  <ion-card>
+    <ion-item lines="none">
+      <h1>BLOGROLL</h1>
+    </ion-item>
+    <ion-item lines="none">
+      <h3>Digite seu e-mail e lhe será enviado uma senha de acesso.</h3>
+    </ion-item>
+  </ion-card>
+
+  <form [formGroup]="redefinir" class='form'>
+     
+    <ion-label position="floating">E-mail</ion-label>
+    <ion-input type="text" formControlName="email"></ion-input>
+
+    <ion-label  class="enviar" position="floating" type="submit" (click)="redefinirSenha()">Entrar
+              </ion-label>
+     
+  </form>
+
+</ion-content>
