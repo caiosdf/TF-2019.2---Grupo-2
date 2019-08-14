@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="background">
+    <div class="ion-text-center">
+      <ion-title>
+        BLOGROLL
+      </ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row *ngFor="let post of posts">
+    <ion-card class="post ion-margin">
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-img src="http://localhost:8000/api/userPhoto/{{post.user_id}}"></ion-img>
+        </ion-avatar>
+        <ion-label class="username">{{post.username}}</ion-label>
+      </ion-item>
+      <ion-img src="http://localhost:8000/api/postPhoto/{{post.id}}"></ion-img>
+      <ion-card-content>
+        <div class="ion-text-start">
+          <p>{{post.title}}</p>
+          <p>{{post.text}}</p>
+        </div>
+        <ion-button slot="start"mode="ios" size="small">
+          <ion-label color="background">Ir para o post</ion-label>
+        </ion-button>
+      </ion-card-content> 
+    </ion-card>
+  </ion-row>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="create"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

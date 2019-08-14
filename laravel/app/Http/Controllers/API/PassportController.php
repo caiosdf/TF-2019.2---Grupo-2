@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 use Auth;
 use DB;
 use App\User;
@@ -46,7 +47,8 @@ class PassportController extends Controller
         $validator = Validator::make($request -> all(), [
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
+            'photo' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
         ]);
 
         //caso os dados de entrada não estejam como o esperado retorn um erro.
@@ -58,6 +60,26 @@ class PassportController extends Controller
         $newUser->name = $request->name; //'seta' o nome deste novo usuário como o nome de entrada.
         $newUser->email = $request->email; //'seta' o e-mail deste novo usuário como o -email de entrada.
         $newUser->password = bcrypt($request->password); // 'seta' a senha deste novo usuário como a senha de entrada encriptada.
+
+        //verifica se existe um arquivo(foto) de entrada.
+        if($request->hasfile('photo')){           
+            
+            //verifica se há uma pasta chamada 'localPhotos'e caso não haja, cria uma para melhor organizar o repositório.
+            if(!Storage::exists('localPhotos/user')){
+                Storage::makeDirectory('localPhotos/user',0775,true);
+            }
+            //guarda a foto em uma variável como tipo 'file'.
+            $file = $request->file('photo');
+            //salva o nome com o qual foi feito o upload da foto.
+            $filename = $file->getClientOriginalName();
+            //salva a foto na pasta 'localPhotos'.
+            $path = $file->storeAs('localPhotos/user',$filename);
+            //adiciona a imagem de entrada a este novo post.
+
+            $newUser->photo = $path;
+
+        }
+
        
         $success['token'] = $newUser->createToken('MyApp')->accessToken; //cria e concede um token de acesso a este novo usuário.
         $success['name'] = $newUser->name; //'seta' o nome associado a este token como  o nome deste usuário.
@@ -68,5 +90,12 @@ class PassportController extends Controller
             'message' => 'Bem-vindo ao Blogroll, '.$newUser->name.'.',
             'data' => $success
         ], $this -> successStatus);
+    }
+
+    public function downloadPhoto($id)
+    {
+        $user = User::findOrFail($id);
+        $path = storage_path().'\app/'.$user->photo;
+        return response()->download($path);
     }
 }

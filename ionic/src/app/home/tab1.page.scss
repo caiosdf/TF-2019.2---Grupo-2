@@ -1,0 +1,30 @@
+.post img {
+  max-height: 51.5vh;
+  overflow: hidden;
+}
+ion-header{
+  --ion-font-family: 'Raleway', sans-serif;
+  
+}
+ion-title{
+  text-shadow: 0.5px 0.5px 0.5px #000;
+  font-size: 24px;
+}
+ion-label.username{
+  font-weight: 900;
+  font-size: 18px;
+}
+ion-content{
+  --background: #9ACCFC;
+}
+ion-card, ion-button{
+  --background: #ffffff;
+}
+ion-button{
+  --background-activated: #ffffff;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+
+

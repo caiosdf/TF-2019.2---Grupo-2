@@ -80,7 +80,23 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
-  
+
+  /** Background azul **/
+  --ion-color-background: #2196F3;
+  --ion-color-background-rgb: 33,150,243;
+  --ion-color-background-contrast: #ffffff;
+  --ion-color-background-contrast-rgb: 255,255,255;
+  --ion-color-background-shade: #1d84d6;
+  --ion-color-background-tint: #37a1f4;
+
+  /** Home Background **/
+  --ion-color-home-background: #9ACCFC;
+  --ion-color-home-background-rgb: 154,204,252;
+  --ion-color-home-background-contrast: #000000;
+  --ion-color-home-background-contrast-rgb: 0,0,0;
+  --ion-color-home-background-shade: #88b4de;
+  --ion-color-home-background-tint: #a4d1fc;
+
 }
 
 /*Fonts*/
