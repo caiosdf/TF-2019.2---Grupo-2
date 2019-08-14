@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('criaPost', 'postController@store');
+Route::get('posts', 'postController@getPosts');

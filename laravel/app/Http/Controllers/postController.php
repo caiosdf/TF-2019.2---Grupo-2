@@ -54,7 +54,9 @@ class postController extends Controller
             //adiciona a imagem de entrada a este novo post.
             $post->photo = $file;
         }
-        
+
+        //adiciona o título de entrada a este novo post.
+        $post->title = $request->title;
         //adiciona o texto de entrada a este novo post.
         $post->text = $request->text;
         //adiciona a tag de entrada a este novo post(categoria do post).
@@ -77,6 +79,13 @@ class postController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    public function getPosts(){
+        
+        return Post::all();
+    
+    } 
+
     public function show($id)
     {
         //
