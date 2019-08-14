@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'cadastro', loadChildren: './cadastro/cadastro.module#CadastroPageModule' },
-  { path: 'tab1', loadChildren: './home/tab1.module#Tab1PageModule' },
+  { path: 'home', loadChildren: './home/tab1.module#Tab1PageModule' },
   { path: 'primeira-pagina', loadChildren: './primeira-pagina/primeira-pagina.module#PrimeiraPaginaPageModule' }
 
 ];

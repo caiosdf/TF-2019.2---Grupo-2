@@ -1,5 +1,13 @@
-ion-content.background{
-    --background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../../assets/img/frozen.gif') 0 0/100% 100% no-repeat; 
+ion-header{
+    --ion-font-family: 'Raleway', sans-serif;
+  }
+ion-title{
+    text-shadow: 0.5px 0.5px 0.5px #000;
+    font-size: 24px;
+  }
+
+ion-content{
+    --background: #7EC3FA;
 }
 ion-content{
     --ion-font-family: 'Raleway', sans-serif; 
@@ -41,3 +49,18 @@ ion-button{
     --ion-color-shade: var(--ion-color-azul-login-shade);
     --ion-color-tint: var(--ion-color-azul-login-tint);
 }
+.swiper-slide {
+    display: block;
+  }
+  
+  ion-slide > h2 {
+    margin-top: 0rem;
+  }
+  ion-slide > h2, p{
+      color: white;
+  }
+  ion-slide > img {
+    max-height: 70%;
+    max-width: 70%;
+    margin: 18px 0;
+  }

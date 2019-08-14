@@ -1,30 +1,40 @@
-<ion-header>
-
-</ion-header>
-
-<ion-content class="background">
-
-<ion-grid>
-  <ion-row justify-content-center align-items-center class="logo"> 
-    <ion-text color="light" class="sombra">
-      ROLL
-    </ion-text>
-  </ion-row>
-  <ion-row justify-content-center align-items-center class="introducao">
-    <div class="ion-text-center">
-      <ion-text color="light" class="sombra">Todo o tipo de conteúdo para você explorar!</ion-text>
-    </div>
-  </ion-row>
+<ion-header translucent>
+    <ion-toolbar color="background">
+      <div class="ion-text-center">
+        <ion-title>
+          BLOGROLL
+        </ion-title>
+      </div>
+    </ion-toolbar>
+  </ion-header>
   
-    <ion-button color="azul-paginaum" expand="full" mode="ios">
-      <ion-text color="light">Comece já!</ion-text>
-    </ion-button>
+  <ion-content  class="background" fullscreen padding scroll-y="false">
+  <ion-slides pager="true">
+  
+          <ion-slide>
+            <img src="../../assets/img/frozen.gif"/>
+            <h2>Bem vindo ao <br><b>BLOGROLL</b></h2>
+            <p>Nosso querido <b>ROLL</b> é um blog no qual você pode compartilhar seu conteúdo preferido ou divulgar sua marca para milhares de usuários.</p>
+          </ion-slide>
+  
+          <ion-slide>
+            <img src="../../assets/img/space.png"/>
+            <p><b>Todo</b> o tipo de conteúdo para você explorar!</p>
+          </ion-slide>
 
-    <ion-button color="azul-paginaum" expand="full" mode="ios">
-      <ion-text color="light">Entrar</ion-text>
-    </ion-button>
-
-</ion-grid>
-
-</ion-content>
-
+          <ion-slide> 
+            <img src="../../assets/img/sol.png"/>
+            <h2>Está pronto?</h2>
+            <ion-button color="background" expand="full" mode="ios" [routerLink]="['/tabs/home']">
+                <ion-text color="light">Comece já!</ion-text>
+              </ion-button>
+          
+              <ion-button color="background" expand="full" mode="ios" [routerLink]="['/login']">
+                <ion-text color="light">Entrar</ion-text>
+              </ion-button>
+            
+          </ion-slide>
+  
+        </ion-slides>
+  
+  </ion-content>
