@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PostService {
 
-  backendURL: string = 'http//localhost:8000/api/';
+  backendURL: string = 'http://localhost:8000/api/';
   constructor(private http: HttpClient) { }
 
   public getPosts():Observable<any>{

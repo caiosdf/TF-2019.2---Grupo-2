@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Carbon\Carbon;
+// use Carbon\Carbon;
 use App\Post;
 use Illuminate\Support\Facades\Validator;
 
@@ -34,7 +34,7 @@ class postController extends Controller
 
         //valida o arquivo de entrada para que seja de fato uma imagem.
         $validator = Validator::make($request->all(), [
-            'photo' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:512'
+            'photo' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
         ]);
 
         if($validator->fails()){
@@ -61,12 +61,16 @@ class postController extends Controller
         $post->text = $request->text;
         //adiciona a tag de entrada a este novo post(categoria do post).
         $post->tag = $request->tag;
+        
+        
+        //Está dando erro
+
         //coleta a data e a hora do exato momento de execução.
-        $dt = Carbon::now();
-        //seta para o fuso horário de São Paulo.
-        $dt->timezone = 'America/Sao_Paulo';
-        //adiciona a data/hora da postagem a este novo post.
-        $post->time = $dt->formatLocalized('%A, %d de %B de %Y - %H:%M');
+        // $dt = Carbon::now();
+        // //seta para o fuso horário de São Paulo.
+        // $dt->timezone = 'America/Sao_Paulo';
+        // //adiciona a data/hora da postagem a este novo post.
+        // $post->time = $dt->formatLocalized('%A, %d de %B de %Y - %H:%M');
         //salva este novo post no banco de dados.
         $post->save();
 
