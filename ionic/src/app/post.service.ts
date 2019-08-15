@@ -23,11 +23,10 @@ export class PostService {
     return this.http.get(this.backendURL + 'posts');
   }
 
-  public sendPost( titulo, texto, foto ):Observable<any> {
+  public sendPost( titulo, texto ):Observable<any> {
     return this.http.post( this.backendURL + 'criaPost', {
       'title': titulo,
-      'text': texto,
-      'photo': foto
+      'text': texto
     }, this.httpHeaders);
   }
 

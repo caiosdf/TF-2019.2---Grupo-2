@@ -9,7 +9,7 @@
     <ion-label color="dark" style="font-weight: bold"> Post novo</ion-label>
     <!-- Botão de postar -->
     <ion-button slot="end" fill="clear" mode="ios">
-      <ion-label type="submit"  (click)="sendPost(Post)" color="light" style="font-weight: bold">Postar</ion-label>
+      <ion-label type="submit"  (click)="sendPost(post)" color="light" style="font-weight: bold">Postar</ion-label>
     </ion-button>
   </ion-toolbar>
 </ion-header>
@@ -27,7 +27,7 @@
   <form [formGroup]="post" class="form">
   <ion-list>
     <!-- Mostra a foto que o usuário escolheu no front -->
-    <img formControlName="photo" src="{{myPhoto}}">
+    <!-- <img formControlName="photo" src="{{myPhoto}}"> -->
     <ion-textarea formControlName="title" placeholder="Título"></ion-textarea>
     <ion-textarea formControlName="text" placeholder="Coloque aqui o conteúdo do seu post :)" auto-grow="true"></ion-textarea>
   </ion-list>
