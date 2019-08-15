@@ -4,32 +4,16 @@ ion-header{
 ion-title{
     text-shadow: 0.5px 0.5px 0.5px #000;
     font-size: 24px;
+    font-weight: 900;
   }
 
 ion-content{
-    --background: #7EC3FA;
+    --background: #3D89B8;
 }
 ion-content{
     --ion-font-family: 'Raleway', sans-serif; 
 }
-ion-text.sombra{
-    text-shadow: 2px 2px 2px #000;
-}
-ion-grid{
-    height: 100%;
-}
-ion-row.logo{
-    height: 30%;
-    letter-spacing: 1rem;
-    font-size: 72px;
-}
-ion-row.introducao{
-    height: 40%;
-    font-size: 36px; 
-}
-ion-row.entrar{
-    height: 30%;
-}
+
 ion-button{
     margin-bottom: 5%;
 }

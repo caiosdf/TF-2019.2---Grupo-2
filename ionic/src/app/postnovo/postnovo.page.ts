@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx'
+import { PostService } from '../post.service'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-postnovo',
@@ -9,6 +11,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx'
 
 export class PostnovoPage implements OnInit {
     myPhoto;
+    public post=FormGroup;
     
     openCamera() {
     const options: CameraOptions = {
@@ -20,8 +23,8 @@ export class PostnovoPage implements OnInit {
  
     this.camera.getPicture(options).then(
       (imageData) => {
-        this.myPhoto = 'data:image/jpeg;base64,' + imageData;
-        console.log('data:image/jpeg;base64,' + imageData);
+        this.myPhoto = 'data:image/jpeg,' + imageData;
+        console.log('data:image/jpeg,' + imageData);
       },
       (error) => {
         console.log(error);
@@ -46,8 +49,20 @@ export class PostnovoPage implements OnInit {
       }
     );
   }
-  constructor(private camera: Camera) { }
-  
+
+  sendPost( form ){
+    
+    if(form.status=='VALID'){
+      this.postService.sendPost( form.value.title, form.value.text, form.value.photo ).subscribe(
+        (res) => {
+          console.log( res.message );
+        }
+      );
+    }
+  }
+
+  constructor(private camera: Camera, private fconstrutor: FormBuilder, public postService: PostService) { }
+
   ngOnInit() {
   }
 

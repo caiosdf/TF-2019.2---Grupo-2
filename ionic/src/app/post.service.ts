@@ -8,10 +8,27 @@ import { Observable } from 'rxjs';
 export class PostService {
 
   backendURL: string = 'http://localhost:8000/api/';
+
+  httpHeaders: any = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  }
+
+
   constructor(private http: HttpClient) { }
 
   public getPosts():Observable<any>{
     return this.http.get(this.backendURL + 'posts');
+  }
+
+  public sendPost( titulo, texto, foto ):Observable<any> {
+    return this.http.post( this.backendURL + 'criaPost', {
+      'title': titulo,
+      'text': texto,
+      'photo': foto
+    }, this.httpHeaders);
   }
 
 }
