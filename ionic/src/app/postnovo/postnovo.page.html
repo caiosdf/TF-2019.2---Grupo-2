@@ -1,0 +1,47 @@
+<ion-header>
+  <!-- Navbar superior -->
+  <ion-toolbar color="background">
+
+    <ion-button slot="start" fill="clear">
+      <ion-icon name="arrow-round-back" color="light"></ion-icon>
+    </ion-button>
+
+    <ion-label color="dark" style="font-weight: bold"> Post novo</ion-label>
+
+    <ion-button slot="end" fill="clear" mode="ios">
+      <ion-label color="light" style="font-weight: bold">Postar</ion-label>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+  <!-- Conteúdo -->
+<ion-content>
+  <!-- Foto e nome de usuário -->
+  <ion-item lines="none" color="postbackground">
+    <ion-thumbnail slot="start">
+      <img src="../assets/matheus.jpeg">
+    </ion-thumbnail>
+    <ion-label color="dark">easydoro23</ion-label>
+  </ion-item>
+    <!-- Input do texto e imagem do usuário -->
+  <ion-list>
+      <img src="{{myPhoto}}">
+
+      <ion-textarea auto-grow="true" placeholder="Coloque aqui o conteúdo do seu post :)"></ion-textarea>
+  </ion-list>
+</ion-content>
+<!-- Editar fonte, inserir link e foto -->
+<ion-footer>  
+  <ion-toolbar position="bottom" color="background">
+    <ion-buttons class="ion-justify-content-center">
+
+      <ion-button (click)="openCamera()" expand="block">
+          <ion-icon name="camera" size="large"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="openGallery()" expand="block">
+          <ion-icon name="image" size="large"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

@@ -82,6 +82,7 @@
 
 
 
+
   /** Background azul **/
   --ion-color-background: #2196F3;
   --ion-color-background-rgb: 33,150,243;
@@ -114,12 +115,22 @@
   --ion-color-azul-login-contrast-rgb: 255,255,255;
   --ion-color-azul-login-shade: #3679a2;
   --ion-color-azul-login-tint: #5095bf;
+  
+  /** postbackground cinza **/
+  --ion-color-postbackground: #F2F2F2;
+  --ion-color-postbackground-rgb: 242,242,242;
+  --ion-color-postbackground-contrast: #000000;
+  --ion-color-postbackground-contrast-rgb: 0,0,0;
+  --ion-color-postbackground-shade: #d5d5d5;
+  --ion-color-postbackground-tint: #f3f3f3;
+  }
 
   /** Fontes **/
   @import url('https://fonts.googleapis.com/css?family=Raleway:900&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet');
 
-}
 
-/*Fonts*/
-@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet');
+
+
+

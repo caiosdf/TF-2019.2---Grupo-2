@@ -1,0 +1,17 @@
+.ion-color-background {
+    --ion-color-base: var(--ion-color-background);
+    --ion-color-base-rgb: var(--ion-color-background-rgb);
+    --ion-color-contrast: var(--ion-color-background-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-background-contrast-rgb);
+    --ion-color-shade: var(--ion-color-background-shade);
+    --ion-color-tint: var(--ion-color-background-tint);
+  }
+  .ion-color-postbackground {
+    --ion-color-base: var(--ion-color-postbackground);
+    --ion-color-base-rgb: var(--ion-color-postbackground-rgb);
+    --ion-color-contrast: var(--ion-color-postbackground-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-postbackground-contrast-rgb);
+    --ion-color-shade: var(--ion-color-postbackground-shade);
+    --ion-color-tint: var(--ion-color-postbackground-tint);
+  }
+  

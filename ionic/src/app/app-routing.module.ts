@@ -7,10 +7,13 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
+
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'cadastro', loadChildren: './cadastro/cadastro.module#CadastroPageModule' },
   { path: 'home', loadChildren: './home/tab1.module#Tab1PageModule' },
-  { path: 'primeira-pagina', loadChildren: './primeira-pagina/primeira-pagina.module#PrimeiraPaginaPageModule' }
+  { path: 'primeira-pagina', loadChildren: './primeira-pagina/primeira-pagina.module#PrimeiraPaginaPageModule' },
+  { path: 'postnovo', loadChildren: './postnovo/postnovo.module#PostnovoPageModule' },
+
 
 ];
 

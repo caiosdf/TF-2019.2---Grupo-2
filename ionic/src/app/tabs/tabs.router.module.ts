@@ -37,6 +37,16 @@ const routes: Routes = [
           }
         ]
       },
+      // {
+      //   path: 'postnovo',
+      //   children: [
+      //     {
+      //       path: '',
+      //       loadChildren: () =>
+      //         import('../postnovo/postnovo.module').then(m => m.PostnovoPageModule)
+      //     }
+      //   ]
+      // },
       {
         path: '',
         redirectTo: '/tabs/home',
