@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('comenta', 'CommentController@store');
+Route::post('editaComentario/{id}', 'CommentController@update');
+Route::delete('apagaComentario/{id}', 'CommentController@delete');
