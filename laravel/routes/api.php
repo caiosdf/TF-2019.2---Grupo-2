@@ -16,19 +16,24 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'auth:api'], function() {
 
+    
+
     // Rotas da PassportController que precisam de token
     Route::get('get-details','API\PassportController@getDetails');
     Route::get('logout', 'API\PassportController@logout');
     Route::post('editarPerfil', 'API\PassportController@update');
-    
-    // Rotas da postController que precisam de token
-    Route::post('criaPost', 'postController@store');
-    Route::post('editarPost/{id}', 'postController@update');
 
     // Rotas da CommentController que precisam de token
     Route::post('comenta', 'CommentController@store');
     Route::post('editaComentario/{id}', 'CommentController@update');
     Route::delete('apagaComentario/{id}', 'CommentController@delete');
+
+    
+    // Rotas da postController que precisam de um usuário logado e que seja blogger.
+    Route::post('criaPost', 'postController@store')->middleware('IsBlogger');
+    Route::post('editarPost/{id}', 'postController@update')->middleware('IsBlogger');
+
+    
     
 });
 
