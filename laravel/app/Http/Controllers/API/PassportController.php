@@ -144,4 +144,16 @@ class PassportController extends Controller
         return response() -> json([$user]); //retorna as informações do usuário logado
         
     }
+
+    public function logout(){
+
+        $accessToken = Auth::user()->token();
+
+        DB::table('oauth_refresh_tokens')->where('access_token_id', $accessToken->id)->update([
+        'revoked' => true
+        ]);
+
+        $accessToken->revoke();
+        return response()->json( null, 204);
+    }
 }

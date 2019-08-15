@@ -18,6 +18,7 @@ Route::group(['middleware' => 'auth:api'], function() {
 
     // Rotas da PassportController que precisam de token
     Route::get('get-details','API\PassportController@getDetails');
+    Route::get('logout', 'API\PassportController@logout');
     Route::post('editarPerfil', 'API\PassportController@update');
     
     // Rotas da postController que precisam de token
