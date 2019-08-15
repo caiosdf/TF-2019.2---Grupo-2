@@ -9,6 +9,7 @@ import { PostService } from '../post.service';
 export class Tab1Page {
 
   posts;
+  user;
 
   constructor(public postService: PostService) {
   }
@@ -24,6 +25,7 @@ export class Tab1Page {
       }
     );
   }
+
   ngOnInit(){
     this.getPosts()
   }

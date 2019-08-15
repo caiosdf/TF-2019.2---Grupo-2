@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 // use Carbon\Carbon;
 use App\Post;
+use App\User;
 use Illuminate\Support\Facades\Validator;
+use Auth;
 use DD;
 
 class postController extends Controller
@@ -32,6 +34,8 @@ class postController extends Controller
 
         //cria um objeto da classe post.
         $post = new Post();
+        //pega as informações do usuário logado
+        $user = Auth::user();
 
         //valida o arquivo de entrada para que seja de fato uma imagem.
         $validator = Validator::make($request->all(), [
@@ -52,7 +56,7 @@ class postController extends Controller
             $file = $request->file('photo');
             //salva o nome com o qual foi feito o upload da foto.
             $filename = $file->getClientOriginalName();
-            //salva a foto na pasta 'localPhotos'.
+            //salva a foto na pasta 'localPhotos/post'.
             $path = $file->storeAs('localPhotos/post',$filename);
             //adiciona a imagem de entrada a este novo post.
 
@@ -66,7 +70,14 @@ class postController extends Controller
         $post->text = $request->text;
         //adiciona a tag de entrada a este novo post(categoria do post).
         $post->tag = $request->tag;
-        
+        //atribui o id do usuário logado ao post que ele está criando.
+        $post->user_id = $user->id;
+        //atribui o nome do usuário logado ao post que ele está criando.
+        $post->user_name = $user->name;
+        //$user->posts()->attach($post->id);
+        $post->save();
+
+        return response()->json([$post]);
         
         //Está dando erro
 
@@ -77,9 +88,7 @@ class postController extends Controller
         // //adiciona a data/hora da postagem a este novo post.
         // $post->time = $dt->formatLocalized('%A, %d de %B de %Y - %H:%M');
         //salva este novo post no banco de dados.
-        $post->save();
 
-        return response()->json([$post]);
     }
 
     /**
@@ -102,6 +111,12 @@ class postController extends Controller
         return response()->download($path);
     }
 
+    public function postUser($id){
+        $post = Post::find($id);
+        $user = $post->postUser();
+        return response()->json([$user]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -111,7 +126,52 @@ class postController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        if($request->title){
+            $post->title = $request->title;
+        }
+        if($request->text){
+            $post->text = $request->text;
+        }
+        if($request->tag){
+            $post->tag = $request->tag;
+        }
+        if($request->photo){
+
+            //verifica se existe um arquivo(foto) de entrada.
+            if($request->hasfile('photo')){  
+
+                Storage::delete($post->photo);
+                
+                //valida os dados de entrada.
+                $validator = Validator::make($request -> all(), [
+                    'photo' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
+                ]);
+
+                //caso os dados de entrada não estejam como o esperado retorn um erro.
+                if ($validator->fails()){
+                    return response() -> json(['error' => $validator -> errors()], 401);
+                }
+                
+                //verifica se há uma pasta chamada 'localPhotos/post'e caso não haja, cria uma para melhor organizar o repositório.
+                if(!Storage::exists('localPhotos/post')){
+                    Storage::makeDirectory('localPhotos/post',0775,true);
+                }
+                //guarda a foto em uma variável como tipo 'file'.
+                $file = $request->file('photo');
+                //salva o nome com o qual foi feito o upload da foto.
+                $filename = $file->getClientOriginalName();
+                //salva a foto na pasta 'localPhotos/post'.
+                $path = $file->storeAs('localPhotos/post',$filename);
+                //adiciona a imagem de entrada a este novo post.
+                $post->photo = $path;
+            }
+        }
+
+        $post->save();
+
+        return response()->json([$post]);
     }
 
     /**

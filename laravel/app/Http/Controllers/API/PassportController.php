@@ -64,7 +64,7 @@ class PassportController extends Controller
         //verifica se existe um arquivo(foto) de entrada.
         if($request->hasfile('photo')){           
             
-            //verifica se há uma pasta chamada 'localPhotos'e caso não haja, cria uma para melhor organizar o repositório.
+            //verifica se há uma pasta chamada 'localPhotos/user'e caso não haja, cria uma para melhor organizar o repositório.
             if(!Storage::exists('localPhotos/user')){
                 Storage::makeDirectory('localPhotos/user',0775,true);
             }
@@ -72,7 +72,7 @@ class PassportController extends Controller
             $file = $request->file('photo');
             //salva o nome com o qual foi feito o upload da foto.
             $filename = $file->getClientOriginalName();
-            //salva a foto na pasta 'localPhotos'.
+            //salva a foto na pasta 'localPhotos/user'.
             $path = $file->storeAs('localPhotos/user',$filename);
             //adiciona a imagem de entrada a este novo post.
 
@@ -80,16 +80,19 @@ class PassportController extends Controller
 
         }
 
+        $newUser->save(); //salva os dados deste usuário no banco de dados.
        
         $success['token'] = $newUser->createToken('MyApp')->accessToken; //cria e concede um token de acesso a este novo usuário.
         $success['name'] = $newUser->name; //'seta' o nome associado a este token como  o nome deste usuário.
         
-        $newUser->save(); //salva os dados deste usuário no banco de dados. 
+
         
         return response() ->json([
             'message' => 'Bem-vindo ao Blogroll, '.$newUser->name.'.',
             'data' => $success
         ], $this -> successStatus);
+
+
     }
 
     public function downloadPhoto($id)
@@ -97,5 +100,66 @@ class PassportController extends Controller
         $user = User::findOrFail($id);
         $path = storage_path().'\app/'.$user->photo;
         return response()->download($path);
+    }
+
+    public function update(Request $request){
+        $user = Auth::user();
+        
+        if($request->name){
+            $user->name = $request->name;
+        }
+        if($request->email){
+            $user->email = $request->email;
+        }
+        if($request->password){
+            $user->password = bcrypt($request->password);
+        }
+        if($request->photo){
+
+            //verifica se existe um arquivo(foto) de entrada.
+            if($request->hasfile('photo')){  
+
+                Storage::delete($user->photo);
+                
+                //valida os dados de entrada.
+                $validator = Validator::make($request -> all(), [
+                    'photo' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
+                ]);
+
+                //caso os dados de entrada não estejam como o esperado retorn um erro.
+                if ($validator->fails()){
+                    return response() -> json(['error' => $validator -> errors()], 401);
+                }
+                
+                //verifica se há uma pasta chamada 'localPhotos/user'e caso não haja, cria uma para melhor organizar o repositório.
+                if(!Storage::exists('localPhotos/user')){
+                    Storage::makeDirectory('localPhotos/user',0775,true);
+                }
+                //guarda a foto em uma variável como tipo 'file'.
+                $file = $request->file('photo');
+                //salva o nome com o qual foi feito o upload da foto.
+                $filename = $file->getClientOriginalName();
+                //salva a foto na pasta 'localPhotos/user'.
+                $path = $file->storeAs('localPhotos/user',$filename);
+                //adiciona a imagem de entrada a este novo post.
+                $user->photo = $path;
+            }
+        }
+        $user->save();
+        return response()->json([$user]);
+
+    }
+
+    public function myPosts(){
+        $user = Auth::user();
+        $posts = $user->Posts();
+        return response()->json([$posts]);
+    }
+
+    public function getDetails() {
+        $user = Auth::user();
+        return response() -> json(['success' => $user], $this ->
+        successStatus); //retorna as informações do usuário logado
+        
     }
 }

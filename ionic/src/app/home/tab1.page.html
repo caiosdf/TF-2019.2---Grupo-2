@@ -13,9 +13,9 @@
     <ion-card class="post ion-margin">
       <ion-item>
         <ion-avatar slot="start">
-          <ion-img src="http://localhost:8000/api/userPhoto/{{post.user_id}}"></ion-img>
+          <ion-img src="http://localhost:8000/api/userPhoto/{{post.id}}"></ion-img>
         </ion-avatar>
-        <ion-label class="username">{{post.username}}</ion-label>
+        <ion-label class="username">{{post.user_name}}</ion-label>
       </ion-item>
       <ion-img src="http://localhost:8000/api/postPhoto/{{post.id}}"></ion-img>
       <ion-card-content>
