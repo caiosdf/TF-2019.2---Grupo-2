@@ -36,4 +36,9 @@ export class AuthService {
         'password': senha
       }, this.httpHeaders);
     }
+
+    usuarioLogado(): Observable<any> {
+      this.httpHeaders.headers["Authorization"] = 'Bearer ' + localStorage.getItem('userToken');
+      return this.http.get( this.apiUrl + 'get-details', this.httpHeaders);
+    }
 }

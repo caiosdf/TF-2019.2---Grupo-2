@@ -47,8 +47,7 @@ class PassportController extends Controller
         $validator = Validator::make($request -> all(), [
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required',
-            'photo' => 'image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048'
+            'password' => 'required'
         ]);
 
         //caso os dados de entrada não estejam como o esperado retorn um erro.
@@ -61,41 +60,88 @@ class PassportController extends Controller
         $newUser->email = $request->email; //'seta' o e-mail deste novo usuário como o -email de entrada.
         $newUser->password = bcrypt($request->password); // 'seta' a senha deste novo usuário como a senha de entrada encriptada.
 
-        //verifica se existe um arquivo(foto) de entrada.
-        if($request->hasfile('photo')){           
-            
-            //verifica se há uma pasta chamada 'localPhotos'e caso não haja, cria uma para melhor organizar o repositório.
-            if(!Storage::exists('localPhotos/user')){
-                Storage::makeDirectory('localPhotos/user',0775,true);
-            }
-            //guarda a foto em uma variável como tipo 'file'.
-            $file = $request->file('photo');
-            //salva o nome com o qual foi feito o upload da foto.
-            $filename = $file->getClientOriginalName();
-            //salva a foto na pasta 'localPhotos'.
-            $path = $file->storeAs('localPhotos/user',$filename);
-            //adiciona a imagem de entrada a este novo post.
-
-            $newUser->photo = $path;
-
+        //verifica se há uma pasta chamada 'localPhotos'e caso não haja, cria uma para melhor organizar o repositório.
+        if(!Storage::exists('localPhotos/user')){
+            Storage::makeDirectory('localPhotos/user',0775,true);
         }
+        //guarda a foto em uma variável já decodificada.
+        $image = base64_decode($request->photo);
+        //salva em uma variável um nome único com extensão .png para esta foto.
+        $imgName = uniqid() . '.png';
+        //salva o caminho 'localPhotos/user' na variável '$path'.
+        $path = storage_path('/app/localPhotos/user/' . $imgName);
+        //adiciona a imagem ao diretório referenciado por '$path'.
+        file_put_contents($path, $image);
+        //atribui ao atributo 'photo' de user, o nome desta imagem de entrada.
+        $newUser->photo = $imgName;
 
+        $newUser->save(); //salva os dados deste usuário no banco de dados.
        
         $success['token'] = $newUser->createToken('MyApp')->accessToken; //cria e concede um token de acesso a este novo usuário.
         $success['name'] = $newUser->name; //'seta' o nome associado a este token como  o nome deste usuário.
         
-        $newUser->save(); //salva os dados deste usuário no banco de dados. 
+
         
         return response() ->json([
             'message' => 'Bem-vindo ao Blogroll, '.$newUser->name.'.',
             'data' => $success
         ], $this -> successStatus);
+
+
     }
 
     public function downloadPhoto($id)
     {
         $user = User::findOrFail($id);
-        $path = storage_path().'\app/'.$user->photo;
+        $path = storage_path().'\app/localPhotos/user/'.$user->photo;
         return response()->download($path);
+    }
+
+    public function update(Request $request){
+        $user = Auth::user();
+        
+        if($request->name){
+            $user->name = $request->name;
+        }
+        if($request->email){
+            $user->email = $request->email;
+        }
+        if($request->password){
+            $user->password = bcrypt($request->password);
+        }
+        if($request->photo){
+
+            Storage::delete('/app/localPhotos/user/'.$user->photo);
+                
+            //verifica se há uma pasta chamada 'localPhotos'e caso não haja, cria uma para melhor organizar o repositório.
+            if(!Storage::exists('localPhotos/user')){
+                Storage::makeDirectory('localPhotos/user',0775,true);
+            }
+            //guarda a foto em uma variável já decodificada.
+            $image = base64_decode($request->photo);
+            //salva em uma variável um nome único com extensão .png para esta foto.
+            $imgName = uniqid() . '.png';
+            //salva o caminho 'localPhotos/user' na variável '$path'.
+            $path = storage_path('/app/localPhotos/user/' . $imgName);
+            //adiciona a imagem ao diretório referenciado por '$path'.
+            file_put_contents($path, $image);
+            //atribui ao atributo 'photo' de user, o nome desta imagem de entrada.
+            $user->photo = $imgName;
+        }
+        $user->save();
+        return response()->json([$user]);
+
+    }
+
+    public function myPosts(){
+        $user = Auth::user();
+        $posts = $user->Posts();
+        return response()->json([$posts]);
+    }
+
+    public function getDetails() {
+        $user = Auth::user();
+        return response() -> json([$user]); //retorna as informações do usuário logado
+        
     }
 }

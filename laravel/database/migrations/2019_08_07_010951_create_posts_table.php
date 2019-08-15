@@ -19,8 +19,9 @@ class CreatePostsTable extends Migration
             $table->text('text');
             // Não funciona $table->string('time');
             $table->string('tag')->nullable();
-            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->bigInteger('user_id')->unsigned();
             $table->string('photo')->nullable();
+            $table->string('user_name');
             $table->timestamps();
         });
 

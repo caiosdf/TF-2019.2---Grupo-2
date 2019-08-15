@@ -15,15 +15,21 @@ use Illuminate\Http\Request;
 
 
 // Rotas da PassportController que não precisam de token
+Route::get('userPhoto/{id}', 'API\PassportController@downloadPhoto');
 Route::post('login', 'API\PassportController@login');
 Route::post('cadastro', 'API\PassportController@register');
-Route::get('userPhoto/{id}', 'API\PassportController@downloadPhoto');
+Route::get('UserPosts','API\PassportController@myPosts');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::group(['middleware' => 'auth:api'], function() {
+
+    Route::post('criaPost', 'postController@store');
+    Route::post('editarPost/{id}', 'postController@update');
+
+    Route::get('get-details','API\PassportController@getDetails');
+    Route::post('editarPerfil', 'API\PassportController@update');
 });
 
-Route::post('criaPost', 'postController@store');
 Route::get('posts', 'postController@getPosts');
 Route::get('postPhoto/{id}', 'postController@downloadPhoto');
-
+Route::get('postUser/{id}', 'postController@postUser');

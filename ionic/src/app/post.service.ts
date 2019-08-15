@@ -23,11 +23,15 @@ export class PostService {
     return this.http.get(this.backendURL + 'posts');
   }
 
-  public sendPost( titulo, texto ):Observable<any> {
+  public sendPost( titulo, texto, foto ):Observable<any> {
+    this.httpHeaders.headers["Authorization"] = 'Bearer ' + localStorage.getItem('userToken');
+    console.log( this.httpHeaders.headers );
     return this.http.post( this.backendURL + 'criaPost', {
       'title': titulo,
-      'text': texto
+      'text': texto,
+      'photo': foto
     }, this.httpHeaders);
   }
+
 
 }
