@@ -1,10 +1,73 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title>
-        Tab Three
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content></ion-content>
-  
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title>
+      Perfil
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    
+      <ion-item>
+        <ion-button expand="full" fill="clear" [routerLink]="['/cadastro']">
+        <ion-label> 
+          <h3>Cadastrar-se</h3>
+        </ion-label>
+      </ion-button>
+      </ion-item>
+   
+
+    <ion-item class="gray">
+      <ion-label>
+        <h2>Username</h2>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Mudar nome de usuário</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item >
+      <ion-label (click)="alteraemail()">
+        <h3>Alterar endereço de e-mail</h3>
+    </ion-label>
+    </ion-item>
+    <ion-item>
+    <ion-label>
+        <h3>Alterar senha</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+    <ion-label (click)="logout()">
+      <h3>Sair</h3>
+    </ion-label>
+    </ion-item>
+
+    <ion-item class="gray">
+      <ion-label>
+        <h2>Informações legais</h2>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Termos</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Política de privacidade</h3>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h3>Créditos</h3>
+      </ion-label>
+    </ion-item>
+    </ion-list>
+
+
+</ion-content>
