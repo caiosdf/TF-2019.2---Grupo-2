@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'cadastro', loadChildren: './cadastro/cadastro.module#CadastroPageModule' },
   { path: 'home', loadChildren: './home/tab1.module#Tab1PageModule' },
   { path: 'primeira-pagina', loadChildren: './primeira-pagina/primeira-pagina.module#PrimeiraPaginaPageModule' },
-  { path: 'postnovo', loadChildren: './postnovo/postnovo.module#PostnovoPageModule' },
+  { path: 'postnovo', loadChildren: './postnovo/postnovo.module#PostnovoPageModule' },  { path: 'altera-email', loadChildren: './altera-email/altera-email.module#AlteraEmailPageModule' },
+
 
 
 ];

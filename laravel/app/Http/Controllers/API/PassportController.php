@@ -144,4 +144,12 @@ class PassportController extends Controller
         return response() -> json([$user]); //retorna as informações do usuário logado
         
     }
+
+    public function updateEmail(Request $request){
+        $user = Auth::user();
+        if($request->email){
+            $user->email = $request->email;
+        }
+    return response()->json([$user]);
+    }
 }

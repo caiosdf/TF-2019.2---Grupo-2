@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>alteraEmail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-item lines="none">
+          <h1>BLOGROLL</h1>
+        </ion-item>
+      </ion-card>
+  
+      <form form="ngModel" (ngSubmit)="onSubmit()">
+          <ion-item>
+            <ion-label>E-mail:</ion-label>
+            <ion-input name="email" [(ngModel)]=form.email></ion-input>
+          </ion-item>
+          <ion-button type="submit">Atualizar</ion-button>
+      </form>
+      
+</ion-content>

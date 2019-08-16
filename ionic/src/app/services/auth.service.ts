@@ -36,6 +36,12 @@ export class AuthService {
         'password': senha
       }, this.httpHeaders);
     }
+    
+    updateEmail(user,id): Observable<any>{
+      return this.http.put (this.apiUrl + 'atualizaEmail/'+id,{
+        'email': email
+      }, this.httpHeaders);
+    }
 
     usuarioLogado(): Observable<any> {
       this.httpHeaders.headers["Authorization"] = 'Bearer ' + localStorage.getItem('userToken');

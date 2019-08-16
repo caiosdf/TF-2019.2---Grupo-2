@@ -1,0 +1,26 @@
+ion-content{
+    --background: #3D89B8;
+     color: white;
+}
+
+ion-card{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: none;
+    border: none;
+    border-style: none;
+    color:white;
+}
+
+
+h1{
+    color: white;
+    font-family: 'Raleway', sans-serif; 
+    font-weight: bold;
+}
+
+h3{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
