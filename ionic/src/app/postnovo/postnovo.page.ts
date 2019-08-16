@@ -3,6 +3,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx'
 import { PostService } from '../post.service'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-postnovo',
@@ -15,7 +16,10 @@ export class PostnovoPage implements OnInit {
   public post: FormGroup;
   
 
-  constructor(private camera: Camera, private fconstrutor: FormBuilder, public postService: PostService, public authService: AuthService) { 
+  constructor(private camera: Camera, private fconstrutor: FormBuilder, 
+              public postService: PostService, 
+              public authService: AuthService,
+              public navCtrl: NavController,) {
     this.post = this.fconstrutor.group({
       'title' : ['', Validators.compose([
         Validators.required
@@ -75,6 +79,7 @@ export class PostnovoPage implements OnInit {
       this.postService.sendPost( form.value.title, form.value.text, this.myPhoto ).subscribe(
         (res) => {
           console.log( res );
+          this.navCtrl.navigateRoot('/tabs/home');
         }
       );
     }

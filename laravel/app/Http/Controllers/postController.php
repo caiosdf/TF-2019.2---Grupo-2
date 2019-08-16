@@ -45,7 +45,7 @@ class postController extends Controller
                 Storage::makeDirectory('localPhotos/post',0775,true);
             }
             //guarda a foto em uma variável já decodificada.
-            $image = base64_decode($request->photo);
+            $image = base64_decode(substr($request->photo, strpos($request->photo, ",")+1));
             //salva em uma variável um nome único com extensão .png para esta foto.
             $imgName = uniqid() . '.png';
             //salva o caminho 'localPhotos/post' na variável '$path'.

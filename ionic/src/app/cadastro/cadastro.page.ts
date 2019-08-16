@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { NavController } from '@ionic/angular';
 
 
 
@@ -12,7 +13,7 @@ import { AuthService } from '../services/auth.service';
 export class CadastroPage implements OnInit {
   public cadastro: FormGroup;
 
-  constructor(private fconstrutor: FormBuilder,public authService: AuthService ) {
+  constructor(private fconstrutor: FormBuilder,public authService: AuthService, public navCtrl: NavController, ) {
     //valida os campos do form antes de enviar para o back.
     this.cadastro = this.fconstrutor.group({
       'name': ['',Validators.compose([
@@ -30,14 +31,17 @@ export class CadastroPage implements OnInit {
     });
    }
 
-  // Passa para a service os campos do cadastro.
+  // Função chamada quando enviamos o form.
   enviarCadastro( form ){
 
     if(form.status=='VALID'){
+
+      // Manda a requisição para a API
       this.authService.enviarCadastro( form.value.name, form.value.email, form.value.password ).subscribe(
         ( res ) => {
           console.log( res.message );
           localStorage.setItem( 'userToken', res.data.token);
+          this.navCtrl.navigateRoot('tabs/home');
         }
       );
     }

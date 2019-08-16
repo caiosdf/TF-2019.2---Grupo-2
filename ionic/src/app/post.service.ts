@@ -23,6 +23,11 @@ export class PostService {
     return this.http.get(this.backendURL + 'posts');
   }
 
+  public getPost(id):Observable<any> {
+    return this.http.get(
+        this.backendURL + 'post/' + id);
+}
+
   public sendPost( titulo, texto, foto ):Observable<any> {
     this.httpHeaders.headers["Authorization"] = 'Bearer ' + localStorage.getItem('userToken');
     console.log( this.httpHeaders.headers );
