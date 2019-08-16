@@ -83,7 +83,7 @@ class postController extends Controller
             //salva este novo post no banco de dados.
         }
 
-    }
+    
 
     /**
      * Display the specified resource.
