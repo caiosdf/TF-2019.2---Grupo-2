@@ -7,14 +7,14 @@
     </ion-toolbar>
   </ion-header>
 <ion-content>
-  <ion-card class="post">
+    <ion-card class="post">
     <ion-item>
       <ion-avatar slot="start">
-        <ion-img src="../assets/img/lux.png"></ion-img>
+        <ion-img src="{{id.user_id}}"></ion-img>
       </ion-avatar>
-      <ion-label class="username">Crownguard</ion-label>
+      <ion-label class="username">{{user_name}}</ion-label>
     </ion-item>
-    <ion-img src="../assets/img/post1.svg"></ion-img>
+    <ion-img src="{{id.photo}}"></ion-img>
     <ion-row class="ion-justify-content-end">
 
         <ion-button fill="clear" size="small" class="like-share"> 
@@ -27,13 +27,13 @@
       </ion-row>
       <ion-card-content>
         <div class="ion-text-start">
-          <p>O que é Lorem Impsum?</p>
-          <p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500, quando uma misturou os caracteres de um texto para criar um espécime de livro. Este texto não só sobreviveu 5 séculos, mas também o salto para a tipografia electrónica, mantendo-se essencialmente inalterada. Foi popularizada nos anos 60 com a disponibilização das folhas de Letraset, que continham passagens com Lorem Ipsum, e mais recentemente com os programas de publicação como o Aldus PageMaker que incluem versões do Lorem Ipsum.</p>
+          <p>{{id.title}}</p>
+          <p>{{id.text}}</p>
         </div>
       </ion-card-content>
-  </ion-card>
+      </ion-card>
   <!--Comentários-->
-  <ion-list mode="md" >
+  <ion-list mode="md">
     <ion-list-header>
       Comentários
     </ion-list-header>
