@@ -1,0 +1,48 @@
+.post img {
+    max-height: 51.5vh;
+    overflow: hidden;
+  }
+
+ion-content{
+    --background: #9ACCFC;
+}
+ion-label.username{
+    font-weight: 900;
+    font-size: 18px;
+}
+
+h2{
+    font-size: 18px;
+    color: #52ACF4;
+    margin:0;
+    padding-top: 2vh;
+}
+p.comentario{
+    color:black;
+    padding-top: 1vh;
+}
+ion-row{
+    text-align: center;
+}
+ion-card{
+    display: fixed;
+    --background: #ffffff;
+}
+ion-card.textarea{
+    margin-bottom: 1vh;
+}
+ion-button.like-share{
+    --background: #ffffff;
+    --padding-start: 0;
+    --padding-end: 10px;
+}
+ion-button{
+    margin-bottom: 1vh;
+}
+
+ion-icon{
+    color:#373737;
+}
+ion-card-content{
+    padding-top: 0;
+}

@@ -1,6 +1,6 @@
+
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
 
 const routes: Routes = [
   {
@@ -16,8 +16,9 @@ const routes: Routes = [
   { path: 'cadastro', loadChildren: './cadastro/cadastro.module#CadastroPageModule' },
   { path: 'home', loadChildren: './home/tab1.module#Tab1PageModule' },
   { path: 'primeira-pagina', loadChildren: './primeira-pagina/primeira-pagina.module#PrimeiraPaginaPageModule' },
-  { path: 'postnovo', loadChildren: './postnovo/postnovo.module#PostnovoPageModule' },  { path: 'altera-email', loadChildren: './altera-email/altera-email.module#AlteraEmailPageModule' },
-
+  { path: 'postnovo', loadChildren: './postnovo/postnovo.module#PostnovoPageModule' },
+  { path: 'post', loadChildren: './post/post.module#PostPageModule' },
+  { path: 'altera-email', loadChildren: './altera-email/altera-email.module#AlteraEmailPageModule' },
 
 
 ];
@@ -31,3 +32,4 @@ const routes: Routes = [
 export class AppRoutingModule {}
 
 
+>>>>>>> origin/merge_9.2

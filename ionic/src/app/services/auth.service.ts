@@ -37,8 +37,8 @@ export class AuthService {
       }, this.httpHeaders);
     }
     
-    updateEmail(user,id): Observable<any>{
-      return this.http.put (this.apiUrl + 'atualizaEmail/'+id,{
+    updateEmail(user,email): Observable<any>{
+      return this.http.put (this.apiUrl + 'atualizaEmail/'+email,{
         'email': email
       }, this.httpHeaders);
     }
@@ -46,5 +46,10 @@ export class AuthService {
     usuarioLogado(): Observable<any> {
       this.httpHeaders.headers["Authorization"] = 'Bearer ' + localStorage.getItem('userToken');
       return this.http.get( this.apiUrl + 'get-details', this.httpHeaders);
+    }
+
+    deslogarUsuario(): Observable<any> {
+      this.httpHeaders.headers["Authorization"] = 'Bearer' + localStorage.getItem('userToken');
+      return this.http.get( this.apiUrl + 'logout', this.httpHeaders);
     }
 }

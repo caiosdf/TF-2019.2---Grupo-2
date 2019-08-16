@@ -23,7 +23,7 @@
           <p>{{post.title}}</p>
           <p>{{post.text}}</p>
         </div>
-        <ion-button href="http://localhost:8000/api/post/{{post.id}}" slot="start"mode="ios" size="small">
+        <ion-button (click)="showPost(post.id)" slot="start"mode="ios" size="small">
           <ion-label color="background">Ir para o post</ion-label>
         </ion-button>
       </ion-card-content> 

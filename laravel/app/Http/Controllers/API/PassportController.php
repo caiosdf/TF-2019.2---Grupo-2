@@ -60,19 +60,10 @@ class PassportController extends Controller
         $newUser->email = $request->email; //'seta' o e-mail deste novo usuário como o -email de entrada.
         $newUser->password = bcrypt($request->password); // 'seta' a senha deste novo usuário como a senha de entrada encriptada.
 
-        //verifica se há uma pasta chamada 'localPhotos'e caso não haja, cria uma para melhor organizar o repositório.
-        if(!Storage::exists('localPhotos/user')){
-            Storage::makeDirectory('localPhotos/user',0775,true);
-        }
-        //guarda a foto em uma variável já decodificada.
-        $image = base64_decode($request->photo);
-        //salva em uma variável um nome único com extensão .png para esta foto.
-        $imgName = uniqid() . '.png';
-        //salva o caminho 'localPhotos/user' na variável '$path'.
-        $path = storage_path('/app/localPhotos/user/' . $imgName);
-        //adiciona a imagem ao diretório referenciado por '$path'.
-        file_put_contents($path, $image);
-        //atribui ao atributo 'photo' de user, o nome desta imagem de entrada.
+        //'seta' a imagem padrão de usuário.
+        $imgName = 'userDefault.png';
+
+        //atribui ao atributo 'photo' de user, o nome desta imagem.
         $newUser->photo = $imgName;
 
         $newUser->save(); //salva os dados deste usuário no banco de dados.
@@ -145,11 +136,24 @@ class PassportController extends Controller
         
     }
 
+<<<<<<< HEAD
     public function updateEmail(Request $request){
         $user = Auth::user();
         if($request->email){
             $user->email = $request->email;
         }
     return response()->json([$user]);
+=======
+    public function logout(){
+
+        $accessToken = Auth::user()->token();
+
+        DB::table('oauth_refresh_tokens')->where('access_token_id', $accessToken->id)->update([
+        'revoked' => true
+        ]);
+
+        $accessToken->revoke();
+        return response()->json( null, 204);
+>>>>>>> origin/merge_9.2
     }
 }
