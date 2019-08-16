@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { authService } from '../services/auth.service'
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-tab3',
@@ -9,19 +9,20 @@ import { authService } from '../services/auth.service'
 })
 export class Tab3Page {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public AuthService: AuthService) {}
 
   alteraemail(){
     this.router.navigate(['/altera-email']);
   }
+  logout(){
+    this.AuthService.deslogarUsuario().subscribe(
+      (res) => {
+        console.log( res.message );
+        localStorage.removeItem( 'userToken' )
+        localStorage.removeItem( 'userLogged' );
+        this.router.navigate(['/tabs/home']);
+      }
+    )
+  }
 }
-logout(){
-  this.authService.deslogarUsuario().subscribe(
-    (res) => {
-      console.log( res.message );
-      localStorage.removeItem( 'userToken' )
-      localStorage.removeItem( 'userLogged' );
-      this.router.navigate(['/tabs/home']);
-    }
-  )
-}
+
