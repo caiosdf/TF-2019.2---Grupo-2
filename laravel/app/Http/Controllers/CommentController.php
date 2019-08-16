@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Comment;
 use Auth;
 
+
 class CommentController extends Controller
 {
     
@@ -63,4 +64,6 @@ class CommentController extends Controller
         return response()->json(['Comentário deletado!']);
 
     }
+
+
 }

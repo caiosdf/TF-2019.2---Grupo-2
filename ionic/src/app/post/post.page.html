@@ -37,46 +37,31 @@
     <ion-list-header>
       Comentários
     </ion-list-header>
-
-    <ion-item>
-      <ion-avatar slot="start">
-        <img src="../../assets/img/pikachu.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Pikachu</h2>
-        <p class="comentario">Pika pika pika pikah! pikachu!!!</p>
-      </ion-label>
-    </ion-item>
-
-    <ion-item>
+    <ion-row *ngFor = "let comment of comments">
+      <ion-item>
         <ion-avatar slot="start">
-          <img src="../../assets/img/ezreal.png">
+          <img src="http://localhost:8000/api/userPhoto/{{comment.user_id}}">
         </ion-avatar>
         <ion-label>
-          <h2>Ezreal</h2>
-          <p class="comentario">Muito bom, já quero o meu</p>
+          <h2>{{comment.user_name}}</h2>
+          <p class="comentario">{{comment.text}}</p>
         </ion-label>
       </ion-item>
+  </ion-row>
 
-    <ion-item>
-      <ion-avatar slot="start">
-        <img src="../../assets/img/ahri.png">
-      </ion-avatar>
-      <ion-label>
-        <h2>Ahri</h2>
-        <p class="comentario">Já comprei e recomendo, ótimo produto!</p>
-      </ion-label>
-    </ion-item>
   </ion-list>
-  <ion-card class="textarea">
-    <ion-item>
-      <ion-textarea placeholder="Escreva aqui seu comentário" rows="1" auto-grow="true"></ion-textarea>
-    </ion-item>
-  </ion-card>
+  <form [formGroup] = "comentario" class='form'>
+    <ion-card class="textarea">
+      <ion-item>
+        <ion-textarea placeholder="Escreva aqui seu comentário" rows="1" auto-grow="true" formControlName = "text"></ion-textarea>
+      </ion-item>
+    </ion-card>
+  </form>
   <ion-row class="ion-justify-content-center">
     <ion-button mode="ios" size="default">
-      <ion-label>Enviar</ion-label>
+      <ion-label (click)="fazComentario(comentario)">Enviar</ion-label>
     </ion-button>
   </ion-row>
+  
 
 </ion-content>

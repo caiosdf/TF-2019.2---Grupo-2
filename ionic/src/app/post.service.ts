@@ -38,5 +38,14 @@ export class PostService {
     }, this.httpHeaders);
   }
 
+  public fazComentario( texto, post_id):Observable<any> {
+    this.httpHeaders.headers["Authorization"] = 'Bearer ' + localStorage.getItem('userToken');
+    return this.http.post(this.backendURL + 'fazComentario/' + post_id, {'text': texto}, this.httpHeaders);
+  }
+
+  public getComments(id):Observable<any> {
+    return this.http.get(this.backendURL + 'comments/' + id);
+  }
+
 
 }

@@ -43,12 +43,12 @@ Route::get('UserPosts','API\PassportController@myPosts');
 Route::post('login', 'API\PassportController@login');
 Route::post('cadastro', 'API\PassportController@register');
 
-// Rotas da posttController que não precisam de token
+// Rotas da postController que não precisam de token
 Route::get('posts', 'postController@getPosts');
 Route::get('postPhoto/{id}', 'postController@downloadPhoto');
 Route::get('postUser/{id}', 'postController@postUser');
 Route::get('post/{id}', 'postController@getPost');
-
+Route::get('comments/{id}','postController@getComments');
 
 
 

@@ -38,23 +38,26 @@ class postController extends Controller
         $user = Auth::user();
 
         //verifica se existe um usuário logado.
-        if($user){           
+        if($user){  
             
-            //verifica se há uma pasta chamada 'localPhotos'e caso não haja, cria uma para melhor organizar o repositório.
-            if(!Storage::exists('localPhotos/post')){
-                Storage::makeDirectory('localPhotos/post',0775,true);
+            if($request->photo){
+            
+                //verifica se há uma pasta chamada 'localPhotos'e caso não haja, cria uma para melhor organizar o repositório.
+                if(!Storage::exists('localPhotos/post')){
+                    Storage::makeDirectory('localPhotos/post',0775,true);
+                }
+                //guarda a foto em uma variável já decodificada.
+                $image = base64_decode(substr($request->photo, strpos($request->photo, ",")+1));
+                //$image = base64_decode($request->photo);
+                //salva em uma variável um nome único com extensão .png para esta foto.
+                $imgName = uniqid() . '.png';
+                //salva o caminho 'localPhotos/post' na variável '$path'.
+                $path = storage_path('/app/localPhotos/post/' . $imgName);
+                //adiciona a imagem ao diretório referenciado por '$path'.
+                file_put_contents($path, $image);
+                //atribui ao atributo 'photo' de post, o nome desta imagem de entrada.
+                $post->photo = $imgName;
             }
-            //guarda a foto em uma variável já decodificada.
-            $image = base64_decode(substr($request->photo, strpos($request->photo, ",")+1));
-            //salva em uma variável um nome único com extensão .png para esta foto.
-            $imgName = uniqid() . '.png';
-            //salva o caminho 'localPhotos/post' na variável '$path'.
-            $path = storage_path('/app/localPhotos/post/' . $imgName);
-            //adiciona a imagem ao diretório referenciado por '$path'.
-            file_put_contents($path, $image);
-            //atribui ao atributo 'photo' de post, o nome desta imagem de entrada.
-            $post->photo = $imgName;
-
             
 
             //adiciona o título de entrada a este novo post.
@@ -108,6 +111,12 @@ class postController extends Controller
         return response()->json($post);
     }
 
+    public function getComments($id){
+        $post = Post::find($id);
+        $comments = $post->comments;
+        return $comments;
+    }
+
     public function downloadPhoto($id)
     {
         $post = Post::findOrFail($id);
@@ -151,7 +160,8 @@ class postController extends Controller
                 Storage::makeDirectory('localPhotos/post',0775,true);
             }
             //guarda a foto em uma variável já decodificada.
-            $image = base64_decode($request->photo);
+            $image = base64_decode(substr($request->photo, strpos($request->photo, ",")+1));
+            //$image = base64_decode($request->photo);
             //salva em uma variável um nome único com extensão .png para esta foto.
             $imgName = uniqid() . '.png';
             //salva o caminho 'localPhotos/post' na variável '$path'.
