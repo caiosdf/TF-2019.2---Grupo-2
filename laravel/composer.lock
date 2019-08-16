@@ -4,7 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "b411b938306b7c189de2b8d9b87518a3",
+=======
+
+    "content-hash": "222decffa097b5607522733483950280",
+
+    "content-hash": "45ad7d039179c8fe8bed22d90d80adc5",
+
+>>>>>>> caio_paginaPost/getPost
     "packages": [
         {
             "name": "defuse/php-encryption",

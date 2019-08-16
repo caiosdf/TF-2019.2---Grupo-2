@@ -55,7 +55,7 @@ class postController extends Controller
             //atribui ao atributo 'photo' de post, o nome desta imagem de entrada.
             $post->photo = $imgName;
 
-        
+            
 
             //adiciona o título de entrada a este novo post.
             $post->title = $request->title;
@@ -71,7 +71,7 @@ class postController extends Controller
             $post->save();
 
             return response()->json([$post]);
-            
+        }
             //Está dando erro
 
             //coleta a data e a hora do exato momento de execução.
@@ -97,6 +97,16 @@ class postController extends Controller
         return Post::all();
     
     } 
+
+    public function getPost($id){
+        $post = Post::find($id);
+        $comments = $post->comments;
+        $user = array();
+        foreach($comments as $comment){
+            array_push($user,$comment->user);
+        }
+        return response()->json($post);
+    }
 
     public function downloadPhoto($id)
     {

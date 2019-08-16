@@ -43,6 +43,7 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
             \App\Http\Middleware\CORS::class,
+            
 
         ],
     ];
@@ -65,6 +66,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'cors' => \App\Http\Middleware\CORS::class,
+        'IsBlogger' => \App\Http\Middleware\IsBlogger::class,
     ];
 
     /**
