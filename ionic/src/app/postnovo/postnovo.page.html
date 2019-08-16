@@ -1,0 +1,51 @@
+<ion-header>
+  <!-- Navbar superior -->
+  <ion-toolbar color="background">
+    <!-- Botão voltar -->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <!-- Título da página -->
+    <ion-label color="dark" style="font-weight: bold"> Post novo</ion-label>
+    <!-- Botão de postar -->
+    <ion-button slot="end" fill="clear" mode="ios">
+      <ion-label type="submit"  (click)="sendPost(post)" color="light" style="font-weight: bold">Postar</ion-label>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+  <!-- Conteúdo -->
+<ion-content>
+  <ion-item lines="none" color="postbackground">
+    <!-- Foto do usuário -->
+    <ion-thumbnail slot="start">
+      <img src="../assets/matheus.jpeg">
+    </ion-thumbnail>
+    <!-- Nome do usuario -->
+    <ion-label color="dark">dsvbodnv</ion-label>
+  </ion-item>
+  <!-- Inputs -->
+  <form [formGroup]="post" class="form">
+  <ion-list>
+    <!-- Mostra a foto que o usuário escolheu no front -->
+    <img  src="{{myPhoto}}">
+    <ion-textarea formControlName="title" placeholder="Título"></ion-textarea>
+    <ion-textarea formControlName="text" placeholder="Coloque aqui o conteúdo do seu post :)" auto-grow="true"></ion-textarea>
+  </ion-list>
+  </form> 
+</ion-content>
+<!-- Input foto e galeria -->
+<ion-footer>  
+  <ion-toolbar position="bottom" color="background">
+    <ion-buttons class="ion-justify-content-center">
+
+      <ion-button (click)="openCamera()" expand="block">
+          <ion-icon name="camera" size="large"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="openGallery()" expand="block">
+          <ion-icon name="image" size="large"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

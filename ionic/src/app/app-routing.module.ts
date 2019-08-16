@@ -4,10 +4,23 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    loadChildren: () => import('./primeira-pagina/primeira-pagina.module').then(m => m.PrimeiraPaginaPageModule)
+  },
+  {
+    path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },  { path: 'post', loadChildren: './post/post.module#PostPageModule' }
+  },
+
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: 'cadastro', loadChildren: './cadastro/cadastro.module#CadastroPageModule' },
+  { path: 'home', loadChildren: './home/tab1.module#Tab1PageModule' },
+  { path: 'primeira-pagina', loadChildren: './primeira-pagina/primeira-pagina.module#PrimeiraPaginaPageModule' },
+  { path: 'postnovo', loadChildren: './postnovo/postnovo.module#PostnovoPageModule' },
+  { path: 'post', loadChildren: './post/post.module#PostPageModule' },
+
 
 ];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
@@ -15,3 +28,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+
+

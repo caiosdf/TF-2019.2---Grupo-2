@@ -1,0 +1,50 @@
+ion-header{
+    --ion-font-family: 'Raleway', sans-serif;
+  }
+ion-title{
+    text-shadow: 0.5px 0.5px 0.5px #000;
+    font-size: 24px;
+    font-weight: 900;
+  }
+
+ion-content{
+    --background: #3D89B8;
+}
+ion-content{
+    --ion-font-family: 'Raleway', sans-serif; 
+}
+
+ion-button{
+    margin-bottom: 5%;
+}
+.ion-color-azul-paginaum {
+    --ion-color-base: var(--ion-color-azul-paginaum);
+    --ion-color-base-rgb: var(--ion-color-azul-paginaum-rgb);
+    --ion-color-contrast: var(--ion-color-azul-paginaum-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-azul-paginaum-contrast-rgb);
+    --ion-color-shade: var(--ion-color-azul-paginaum-shade);
+    --ion-color-tint: var(--ion-color-azul-paginaum-tint);
+  }
+  .ion-color-azul-login {
+    --ion-color-base: var(--ion-color-azul-login);
+    --ion-color-base-rgb: var(--ion-color-azul-login-rgb);
+    --ion-color-contrast: var(--ion-color-azul-login-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-azul-login-contrast-rgb);
+    --ion-color-shade: var(--ion-color-azul-login-shade);
+    --ion-color-tint: var(--ion-color-azul-login-tint);
+}
+.swiper-slide {
+    display: block;
+  }
+  
+  ion-slide > h2 {
+    margin-top: 0rem;
+  }
+  ion-slide > h2, p{
+      color: white;
+  }
+  ion-slide > img {
+    max-height: 70%;
+    max-width: 70%;
+    margin: 18px 0;
+  }

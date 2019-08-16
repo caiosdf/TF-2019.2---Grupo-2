@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item lines="none">
+      <h1>BLOGROLL</h1>
+    </ion-item>
+  </ion-card>
+
+  <form [formGroup]="login" class='form'>
+     
+    <ion-label position="floating">E-mail</ion-label>
+    <ion-input type="text" formControlName="email"></ion-input>
+      
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input type="password" formControlName="password"></ion-input>
+
+    <ion-label  class="enviar" position="floating" type="submit" (click)="logarUsuario(login)">Entrar
+              </ion-label>
+     
+  </form>
+
+
+  <ion-card>
+    <ion-item lines="none"> 
+      <ion-label>Esqueceu a senha?</ion-label>
+    </ion-item>
+  </ion-card>
+
+</ion-content>
