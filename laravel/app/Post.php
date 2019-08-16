@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\User;
 use App\Comment;
+use App\Post;
 use Laravel\Passport\HasApiTokens;
 
 class Post extends Model

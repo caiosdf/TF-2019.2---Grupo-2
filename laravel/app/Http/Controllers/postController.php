@@ -102,7 +102,11 @@ class postController extends Controller
 
     public function getPost($id){
         $post = Post::find($id);
-        $comments = $post->comments();
+        $comments = $post->comments;
+        $user = array();
+        foreach($comments as $comment){
+            array_push($user,$comment->user);
+        }
         return response()->json($post);
     }
 

@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 use App\Post;
 use App\User;
+use App\Comment;
 
 class User extends Authenticatable
 {
