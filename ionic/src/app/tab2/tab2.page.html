@@ -1,9 +1,50 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab Two
-    </ion-title>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title>cadastro</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-card>
+    <ion-item lines="none">
+      <h1>BLOGROLL</h1>
+    </ion-item>
+    <ion-item lines="none">
+      <h3>Como você se chama?</h3>
+    </ion-item>
+  </ion-card>
+
+  <form [formGroup]="cadastro" class='form'>
+     
+    <ion-label position="floating">Nome de usuário</ion-label>
+    <ion-input required type="text" formControlName="name"></ion-input>
+        
+    <ion-label position="floating">E-mail</ion-label>
+    <ion-input type="text" formControlName="email"></ion-input>
+      
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input type="password" formControlName="password"></ion-input>
+
+    <ion-label  class="enviar" position="floating" type="submit" (click)="enviarCadastro(cadastro)">Pronto
+              </ion-label>
+     
+  </form>
+
+  <ion-card>
+    <ion-item lines="none"> 
+      <ion-label>Já possui uma conta?</ion-label>
+    </ion-item>
+    <ion-item lines="none"> 
+      <ion-label>Entrar</ion-label>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+    <ion-item lines="none"> 
+      <ion-label>Esqueceu a senha?</ion-label>
+    </ion-item>
+  </ion-card>
+
+</ion-content>

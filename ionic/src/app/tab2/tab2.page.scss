@@ -1,1 +1,56 @@
 
+ion-content{
+    --background: #3D89B8;
+     color: white;
+}
+
+ion-card{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: none;
+    border: none;
+    border-style: none;
+    color:white;
+}
+
+
+h1{
+    color: white;
+    font-family: 'Raleway', sans-serif; 
+    font-weight: bold;
+}
+
+h3{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.form{
+    margin: 10vw;
+}
+
+ion-item{
+    color:white;
+    --background: #3D89B8;
+}
+
+ion-input{
+    --background: #C7DAEB;
+    color: #3D89B8;
+    margin-bottom: 1vw;
+    border-radius: 10px;
+}
+
+ion-label{
+    color: white;
+    margin: 0;
+}
+
+.enviar{
+    display:flex;
+    align-self: center;
+    justify-content: center;
+    
+}
+
