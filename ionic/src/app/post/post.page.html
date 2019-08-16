@@ -10,11 +10,11 @@
     <ion-card class="post">
     <ion-item>
       <ion-avatar slot="start">
-        <!-- <ion-img src="{{posts.user_id}}"></ion-img> -->
+        <ion-img src="http://localhost:8000/api/userPhoto/{{posts.user_id}}"></ion-img>
       </ion-avatar>
-      <!-- <ion-label class="username">{{posts.user_name}}</ion-label> -->
+      <ion-label class="username">{{posts.user_name}}</ion-label>
     </ion-item>
-    <!-- <ion-img src="{{posts.photo}}"></ion-img> -->
+    <ion-img src="http://localhost:8000/api/postPhoto/{{posts.id}}"></ion-img>
     <ion-row class="ion-justify-content-end">
 
         <ion-button fill="clear" size="small" class="like-share"> 
@@ -27,8 +27,8 @@
       </ion-row>
       <ion-card-content>
         <div class="ion-text-start">
-          <!-- <p>{{posts.title}}</p> -->
-          <!-- <p>{{posts.text}}</p> -->
+          <p>{{posts.title}}</p>
+          <p>{{posts.text}}</p>
         </div>
       </ion-card-content>
       </ion-card>

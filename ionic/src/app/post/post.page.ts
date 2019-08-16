@@ -9,25 +9,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./post.page.scss'],
 })
 export class PostPage implements OnInit {
-  posts;
+  posts = {id:null , title:null, text:null, user_id:null, user_name:null }
   post;
 
   constructor(public service: PostService, public navCtrl: NavController, private router: Router) { 
     this.post = this.router.getCurrentNavigation().extras
   }
 
-
-
-
-
-
-
-
-
   getPost (id):void{
     // console.log(this.service + "Resgatando pessoas no Back")
-    console.log("papapapa");
-    this.service.getPost(id).subscribe( (res) => { this.posts = res;console.log(this.post) } );
+    this.service.getPost(id).subscribe( (res) => { this.posts = res;console.log(res) } );
   }
 
 
@@ -37,8 +28,5 @@ export class PostPage implements OnInit {
   ngOnInit(){
         // console.log(id)
     this.getPost(this.post);
-    console.log('pepepepe');
-    console.log(this.post);
-    
   }
 }
