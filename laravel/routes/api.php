@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('editarPerfil', 'API\PassportController@update');
 
     // Rotas da CommentController que precisam de token
-    Route::post('comenta', 'CommentController@store');
+    Route::post('fazComentario/{id}', 'CommentController@store');
     Route::post('editaComentario/{id}', 'CommentController@update');
     Route::delete('apagaComentario/{id}', 'CommentController@delete');
 
@@ -47,6 +47,9 @@ Route::post('cadastro', 'API\PassportController@register');
 Route::get('posts', 'postController@getPosts');
 Route::get('postPhoto/{id}', 'postController@downloadPhoto');
 Route::get('postUser/{id}', 'postController@postUser');
+Route::get('post/{id}', 'postController@getPost');
+
+
 
 
 

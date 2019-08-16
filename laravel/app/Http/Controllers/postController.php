@@ -100,6 +100,12 @@ class postController extends Controller
     
     } 
 
+    public function getPost($id){
+        $post = Post::find($id);
+        $comments = $post->comments();
+        return response()->json($post);
+    }
+
     public function downloadPhoto($id)
     {
         $post = Post::findOrFail($id);

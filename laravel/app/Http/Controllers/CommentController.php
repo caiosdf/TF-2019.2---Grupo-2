@@ -52,7 +52,7 @@ class CommentController extends Controller
       
         else{
       
-            return response()->json(['Você está autorizado a alterar somente seus próprios comentários.'])
+            return response()->json(['Você está autorizado a alterar somente seus próprios comentários.']);
       
         }
     }
