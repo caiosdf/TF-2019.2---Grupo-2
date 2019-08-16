@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { PostService } from '../post.service';
+import { NavController } from '@ionic/angular'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-tab1',
@@ -10,7 +12,7 @@ export class Tab1Page {
 
   posts;
 
-  constructor(public postService: PostService) {
+  constructor(public postService: PostService, public navCtrl: NavController, private router: Router) {
   }
 
   getPosts():void{
@@ -23,6 +25,10 @@ export class Tab1Page {
         }
       }
     );
+  }
+  showPost(id){
+    console.log(id)
+    this.router.navigateByUrl('/post',id);
   }
 
   ngOnInit(){
